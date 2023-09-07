@@ -7,41 +7,39 @@ use App\Entity\User;
 
 class UserModel
 {
-    public function save($name, $email, $password){
+    public function save($user){
+        session_start();
+
         $pdoConnection = (new DatabaseConnection())->getConnection();
 
         /** @var $pdoConnection PDO */
         $statement = $pdoConnection->prepare("INSERT INTO user (name, email, password) values (:name, :email, :password)");
-        $statement->bindParam(':name', $name);
-        $statement->bindParam(':email', $email);
-        $statement->bindParam(':password', md5($password));
-        $statement->execute();
+        $statement->bindParam(':name', $user->name);
+        $statement->bindParam(':email', $user->email);
+        $statement->bindParam(':password', md5($user->password));
+
+        if (!$statement->execute()) {
+            return false;
+        }
     }
 
-    public function authenticate(User $user): bool
+    public function authenticate(User $user)
     {
-        session_destroy();
-        $pdoConnection = (new DatabaseConnection())->getConnection();
-        $password = md5($user->password);
-
-        $statement = $pdoConnection->prepare("SELECT * FROM user WHERE email = :email");
-        $statement->bindParam(':email', $user->email);
-
-        if(!$statement->execute()) {
-            session_destroy();
-            return false;
-        }
-
-        $result = $statement->fetch(\PDO::FETCH_ASSOC);
-
-        if ($result['password'] != $password) {
-            return false;
-        }
-
         session_start();
+        $pdoConnection = (new DatabaseConnection())->getConnection();
 
-        $_SESSION['user_id'] = $result['id'];
+        $statement = $pdoConnection->prepare("SELECT * FROM user WHERE email = :email AND password = :password");
+        $statement->execute([
+            ':email' =>  $user->email,
+            ':password' => md5($user->password)
+        ]);
 
+        if (!$row = $statement->fetch()) {
+            return false;
+        }
+
+        setcookie("user_id", $row['id'], time()+60*60*24*30, "/", NULL);
+        echo("<script>setTimeout(\"location.href = '/tela_inicial.php';\",1500);</script>");
         return true;
     }
 }

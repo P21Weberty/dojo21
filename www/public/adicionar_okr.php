@@ -1,14 +1,15 @@
 <?php
-
 require_once "../vendor/autoload.php";
-
-session_start();
 
 use App\Model\ObjectiveModel;
 
+if (!isset($_COOKIE['user_id'])) {
+    header("Location: index.php");
+}
+
 $objectiveModel = new ObjectiveModel();
 
-$objectives = $objectiveModel->list($_SESSION['user_id']);
+$objectives = $objectiveModel->listar($_COOKIE['user_id']);
 ?>
 
 <!DOCTYPE html>

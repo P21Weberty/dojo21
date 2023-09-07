@@ -3,54 +3,39 @@
 namespace App\Http\Controller;
 
 use App\Model\UserModel;
-use App\Http\Controller\Controller;
 
 class User extends Controller
 {
     public function save(){
+        session_start();
+
         $isPost = $_SERVER['REQUEST_METHOD'];
 
         if ($isPost === 'POST') {
-            $name = $_POST['name'] ?: '';
-            $email = $_POST['email'] ?: '';
-            $password = $_POST['password'] ?: '';
+            $user = new \App\Entity\User();
+            $user->name = $_POST['name'] ?: '';
+            $user->email = $_POST['email'] ?: '';
+            $user->password = $_POST['password'] ?: '';
 
-            if(empty($name)) {
-                $this->sendJson([
-                    'result' => 'error',
-                    'message' => 'Invalid name'
-                ]);
+            if (!(new UserModel())->save($user)){
+                http_response_code(400);
             }
-
-            (new UserModel())->save($name, $email, $password);
-
-            $this->sendJson([
-                'result' => 'success',
-            ]);
         }
     }
 
     public function login()
     {
+        session_start();
         $isPost = $_SERVER['REQUEST_METHOD'];
 
         if ($isPost === 'POST') {
-            $email = $_POST['email'] ?: '';
-            $password = $_POST['password'] ?: '';
+            $user = new \App\Entity\User();
+            $user->email = $_POST['email'] ?: '';
+            $user->password = $_POST['password'] ?: '';
 
-            if (!$email || !$password) {
-                $this->sendJson([
-                    'result' => 'error',
-                    'message' => 'Usuário ou senha inválidos'
-                ]);
+            if (!(new UserModel())->authenticate($user)){
+                http_response_code(400);
             }
         }
-
-        $user = new \App\Entity\User();
-        $user->email = $email;
-        $user->password = $password;
-
-        $userModel = new UserModel();
-        if ($userModel->authenticate($user));
     }
 }

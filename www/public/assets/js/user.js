@@ -9,11 +9,10 @@ let User = (() => {
                 type: 'POST',
                 data: userForm,
                 success: function (data) {
-                    let response = JSON.parse(data);
-
-                    if(response.result !== 'success'){
-                        alert('Nome inválido ou não preenchido!');
-                    }
+                    window.location.href = 'index.php';
+                },
+                error: function (data){
+                    alert("Campos inválidos")
                 }
             });
         });

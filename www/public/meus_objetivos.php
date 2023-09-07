@@ -2,16 +2,17 @@
 
 require_once "../vendor/autoload.php";
 
-session_start();
-
 use App\Http\Controller\KeyResult;
 use App\Model\KeyResultModel;
 use App\Model\ObjectiveModel;
 
+session_start();
+
+
 $objectiveModel = new ObjectiveModel();
 $keyResultsModel = new KeyResultModel();
 
-$objectives = $objectiveModel->list($_SESSION['user_id']);
+$objectives = $objectiveModel->listar(39);
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -58,6 +59,6 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 <footer></footer>
 <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-<script src="assets/js/key-results.js" type="text/javascript"></script>
+<script src="assets/js/objective.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 require_once '../vendor/autoload.php';
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -22,19 +23,19 @@ require_once '../vendor/autoload.php';
             <div class="">
                 <label for="nome">
                     <span>Nome: </span>
-                    <input type="text" name="name" id="name" value="">
+                    <input type="text" name="name" id="name" required>
                 </label>
             </div>
             <div class="">
                 <label for="email">
                     <span>Email: </span>
-                    <input type="email" id="email" name="email" value="email@email.com">
+                    <input type="email" id="email" name="email" required>
                 </label>
             </div>
             <div>
                 <label for="password">
                     <span>Senha: </span>
-                    <input type="password" id="password" name="password" value="123456789">
+                    <input type="password" id="password" name="password" required>
                 </label>
             </div>
 
@@ -48,7 +49,7 @@ require_once '../vendor/autoload.php';
 </main>
 <footer></footer>
 <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-<script src="assets/js/login.js" type="text/javascript"></script>
+<script src="assets/js/user.js" type="text/javascript"></script>
 </body>
 </html>
 

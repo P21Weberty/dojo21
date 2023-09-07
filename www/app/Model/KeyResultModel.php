@@ -21,7 +21,7 @@ class KeyResultModel
         ]);
     }
 
-    public function list(int $objectiveId) {
+    public function listar(int $objectiveId) {
         $pdoConnection = (new DatabaseConnection())->getConnection();
         $statement = $pdoConnection->prepare("SELECT * FROM key_result WHERE key_result.objective_id = :objectiveId");
         $statement->bindParam(':objectiveId', $objectiveId);

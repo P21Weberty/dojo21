@@ -1,7 +1,14 @@
 <?php
 
+use App\Router\Router;
+
 require_once '../vendor/autoload.php';
 
+if (!isset($_COOKIE['user_id'])) {
+    header("Location: index.php");
+}
+
+(new Router())->route();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -13,9 +20,6 @@ require_once '../vendor/autoload.php';
 <body>
 <header></header>
 <nav>
-
-</nav>
-
 
 
 <main>
@@ -66,9 +70,7 @@ require_once '../vendor/autoload.php';
 
 <footer></footer>
 <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-<script src="assets/js/user.js" type="text/javascript"></script>
 <script src="assets/js/objective.js" type="text/javascript"></script>
-<script src="assets/js/login.js" type="text/javascript"></script>
 </body>
 </html>
 

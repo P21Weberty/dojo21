@@ -10,16 +10,15 @@ use App\Http\Controller\Controller;
 class Objective extends Controller
 {
     public function save(){
+        session_start();
+
         $isPost = $_SERVER['REQUEST_METHOD'];
 
         if ($isPost === 'POST') {
-            $title = $_POST['title'] ?: '';
-            $description = $_POST['description'] ?: '';
-
             $objective = new ObjectiveEntity();
-            $objective->setUser($_SESSION['user_id']);
-            $objective->setTitle($title);
-            $objective->setDescription($description);
+            $objective->setUser($_COOKIE['user_id']);
+            $objective->setTitle($_POST['title'] ?: '');
+            $objective->setDescription($_POST['description'] ?: '');
 
             (new ObjectiveModel())->save($objective);
 
