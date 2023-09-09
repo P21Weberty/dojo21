@@ -10,8 +10,6 @@ class Router
 {
     public function route(){
 
-        session_start();
-
         $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         if($url === '/user/login'){
@@ -24,6 +22,10 @@ class Router
 
         if($url === '/objective/save'){
             (new Objective())->save();
+        }
+
+        if($url === '/objective/delete'){
+            (new Objective())->delete();
         }
 
         if($url === '/key-results/save'){

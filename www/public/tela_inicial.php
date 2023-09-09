@@ -15,14 +15,10 @@ if (!isset($_COOKIE['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Tela Inicial</title>
 </head>
 <body>
-<header></header>
-<nav>
-
-
-<main>
     <section class="jumbotron text-center">
         <h2>OKR: OBJECTIVE KEY RESULTS</h2>
         <p>É uma metodologia de definição de metas a partir de objetivos chaves</p>
@@ -33,44 +29,29 @@ if (!isset($_COOKIE['user_id'])) {
         <p></p>
     </section>
 
-    <section class="text-center">
+    <form method="POST" id="objective-form" class="form">
         <h2>Adicionar Objetivo usuário</h2>
-        <form method="POST" id="objective-form" class="form">
-            <div class="">
-                <label for="title">
-                    <span>Título: </span>
-                    <input type="text" name="title" id="title" value="">
-                </label>
-            </div>
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" name="title" id="title" value="">
+        </div>
 
-            <div class="">
-                <label for="description">
-                    <span>Descrição: </span>
-                    <input type="text" id="description" name="description" value="">
-                </label>
-            </div>
+        <div class="form-group">
+            <label for="description">Descrição:</label>
+            <input type="text" id="description" name="description" value="">
+        </div>
 
-            <div>
-                <button class="btn" type="submit">
-                    ENVIAR
-                </button>
-            </div>
-        </form>
-    </section>
+        <button class="btn" type="submit">ENVIAR</button>
+    </form>
+<?php require_once "adicionar_okr.php";?>
+<?php require_once "meus_objetivos.php";?>
 
-    <section>
-        <h2>Links úteis</h2>
-
-        <a class="btn" href="adicionar_okr.php">Adicionar key result</a>
-        <a class="btn" href="meus_objetivos.php">Listar meus objetivos</a>
-    </section>
-
-
-</main>
-
-<footer></footer>
-<script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-<script src="assets/js/objective.js" type="text/javascript"></script>
+<footer>
+    <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
+    <script src="assets/js/script.js" type="text/javascript"></script>
+    <script src="assets/js/key-results.js" type="text/javascript"></script>
+    <script src="assets/js/objective.js" type="text/javascript"></script>
+</footer>
 </body>
 </html>
 

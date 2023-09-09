@@ -1,16 +1,11 @@
 <?php
 
-error_reporting(0);
+use App\Router\Router;
 
 require_once '../vendor/autoload.php';
 
-use App\Router\Router;
-
 (new Router())->route();
-
-session_start();
 unset($_COOKIE["user_id"]);
-setcookie('user_id', null, -1, '/');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,33 +20,24 @@ setcookie('user_id', null, -1, '/');
 
 </nav>
 <main class="container">
-    <section class="form text-center">
-        <h2>Login</h2>
+    <section class="form">
         <form method="POST" id="login-form">
-            <div class="">
-                <label for="email">
-                    <span>Email: </span>
-                    <input type="email" placeholder="Digite aqui o e-mail" id="email" name="email" required>
-                </label>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="Digite aqui o e-mail" id="email" name="email" value="" autofocus>
             </div>
-            <div>
-                <label for="password">
-                    <span>Senha: </span>
-                    <input type="password" placeholder="Digite aqui a senha" id="password" name="password" required>
-                </label>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" placeholder="Digite aqui a senha" id="password" name="password" value="">
             </div>
 
-            <div>
-                <button class="btn" type="submit">
-                    Logar
-                </button>
+            <div class="form-button">
+                <button class="btn" type="submit">Logar</button>
+                <a class="btn" href="cadastro.php">Cadastrar</a>
             </div>
         </form>
-        <a href="cadastro.php" class="btn">Cadastrar</a>
     </section>
 </main>
-
-<footer></footer>
 
 <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
 <script src="assets/js/login.js" type="text/javascript"></script>

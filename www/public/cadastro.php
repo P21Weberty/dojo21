@@ -1,9 +1,4 @@
-<?php
-
-require_once '../vendor/autoload.php';
-session_start();
-
-?>
+<?php require_once '../vendor/autoload.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,27 +18,22 @@ session_start();
             <div class="">
                 <label for="nome">
                     <span>Nome: </span>
-                    <input type="text" name="name" id="name" required>
+                    <input type="text" name="name" id="name">
                 </label>
             </div>
             <div class="">
                 <label for="email">
                     <span>Email: </span>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email">
                 </label>
             </div>
             <div>
                 <label for="password">
                     <span>Senha: </span>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password">
                 </label>
             </div>
-
-            <div>
-                <button type="submit" class="btn">
-                    ENVIAR
-                </button>
-            </div>
+            <button type="submit" class="btn">ENVIAR</button>
         </form>
     </section>
 </main>

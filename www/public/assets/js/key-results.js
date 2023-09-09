@@ -8,7 +8,7 @@ let KeyResult = (() => {
                 type: 'POST',
                 data: keyResultForm,
                 success: function (data) {
-                    alert(data)
+                    document.location.href = "tela_inicial.php"
                 },
                 error: function (data) {
                     alert(data)

@@ -27,4 +27,19 @@ class Objective extends Controller
             ]);
         }
     }
+
+    public function delete()
+    {
+        $isPost = $_SERVER['REQUEST_METHOD'];
+
+        if ($isPost === 'POST') {
+
+            if (!(new ObjectiveModel())->delete($_POST['post_id'])){
+                http_response_code(400);
+            }
+            $this->sendJson([
+                'result' => 'success',
+            ]);
+        }
+    }
 }

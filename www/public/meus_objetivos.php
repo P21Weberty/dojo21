@@ -2,63 +2,45 @@
 
 require_once "../vendor/autoload.php";
 
-use App\Http\Controller\KeyResult;
 use App\Model\KeyResultModel;
 use App\Model\ObjectiveModel;
-
-session_start();
 
 
 $objectiveModel = new ObjectiveModel();
 $keyResultsModel = new KeyResultModel();
 
-$objectives = $objectiveModel->listar(39);
+$objectives = $objectiveModel->listar($_COOKIE['user_id']);
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
-    <title>Meus objetivos</title>
-</head>
-<body>
-<header></header>
-<nav>
-
-</nav>
-<main class="container">
-    <section class="meus-objetivos">
-        <h1>Meus objetivos</h1>
-        <?php foreach ($objectives as $objective): ?>
-            <div class="objetivo">
-                <?php $keyResults = $keyResultsModel->list($objective['id']); ?>
-                <h3>Título: <?php echo $objective['title']; ?></h3>
-                <h4>Descrição: <?php echo $objective['description']; ?></h4>
-
-                <h4>Key Results:</h4>
-                <ul>
-                    <?php foreach ($keyResults as $keyResult): ?>
-                        <li><strong><?php echo $keyResult['title']; ?></strong></li>
-                        <ul>
-                            <li><strong>Descrição</strong>: <?=$keyResult['description']?></li>
-                            <li><strong>Tipo</strong>: <?= $keyResult['type'] === 1 ? 'Milestone' : 'Porcentagem'   ?></li>
-                        </ul>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-
-        <hr>
-        <?php endforeach; ?>
-    </section>
-</main>
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($objectives as $key => $objective) : ?>
+        <tr>
+            <td><?= $key++; ?></td>
+            <td><?= $objective['title']; ?></td>
+            <td><?= $objective['description']; ?></td>
+            <td><?= $objective['status']; ?></td>
+            <td>
+                <div style="display: flex" >
+                    <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal_ver">visibility</span>
+                    <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal_remover">remove</span>
+                    <span class="material-icons" id="modal_editar">edit</span>
+                </div>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
 
 
-<footer></footer>
-<script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-<script src="assets/js/objective.js" type="text/javascript"></script>
-</body>
-</html>

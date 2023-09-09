@@ -21,6 +21,8 @@ class UserModel
         if (!$statement->execute()) {
             return false;
         }
+
+        return true;
     }
 
     public function authenticate(User $user)

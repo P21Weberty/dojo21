@@ -8,6 +8,7 @@ let Objective = (() => {
                 type: 'POST',
                 data: userForm,
                 success: function (data) {
+                    window.location.reload()
                 }
             });
         });
