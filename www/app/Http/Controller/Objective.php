@@ -42,4 +42,16 @@ class Objective extends Controller
             ]);
         }
     }
+
+    public function lista()
+    {
+        $isPost = $_SERVER['REQUEST_METHOD'];
+
+        if ($isPost === 'POST') {
+
+            if (!(new ObjectiveModel())->lista($_POST['objective_id'])){
+                http_response_code(400);
+            }
+        }
+    }
 }

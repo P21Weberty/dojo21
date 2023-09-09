@@ -35,7 +35,7 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 <div style="display: flex" >
                     <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal_ver">visibility</span>
                     <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal_remover">remove</span>
-                    <span class="material-icons" id="modal_editar">edit</span>
+                    <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal_editar">edit</span>
                 </div>
             </td>
         </tr>
@@ -43,4 +43,8 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     </tbody>
 </table>
 
-
+<div id="modal" class="modal">
+    <div class="modal-content">
+    <span class="close">X</span>
+    </div>
+</div>

@@ -28,6 +28,10 @@ class Router
             (new Objective())->delete();
         }
 
+        if($url === '/objective/lista'){
+            (new Objective())->lista();
+        }
+
         if($url === '/key-results/save'){
             (new KeyResult())->save();
         }

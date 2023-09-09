@@ -7,8 +7,6 @@ use App\Model\UserModel;
 class User extends Controller
 {
     public function save(){
-        session_start();
-
         $isPost = $_SERVER['REQUEST_METHOD'];
 
         if ($isPost === 'POST') {
@@ -25,7 +23,6 @@ class User extends Controller
 
     public function login()
     {
-        session_start();
         $isPost = $_SERVER['REQUEST_METHOD'];
 
         if ($isPost === 'POST') {

@@ -9,6 +9,7 @@ let User = (() => {
                 type: 'POST',
                 data: userForm,
                 success: function (data) {
+                    alert(data)
                     window.location.href = 'index.php';
                 },
                 error: function (data){

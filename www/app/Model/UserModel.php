@@ -8,8 +8,6 @@ use App\Entity\User;
 class UserModel
 {
     public function save($user){
-        session_start();
-
         $pdoConnection = (new DatabaseConnection())->getConnection();
 
         /** @var $pdoConnection PDO */
@@ -27,7 +25,6 @@ class UserModel
 
     public function authenticate(User $user)
     {
-        session_start();
         $pdoConnection = (new DatabaseConnection())->getConnection();
 
         $statement = $pdoConnection->prepare("SELECT * FROM user WHERE email = :email AND password = :password");

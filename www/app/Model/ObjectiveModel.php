@@ -42,4 +42,35 @@ class ObjectiveModel
 
         return true;
     }
+
+    public function lista($objectiveId)
+    {
+        $pdoConnection = (new DatabaseConnection())->getConnection();
+        $statement = $pdoConnection->prepare("SELECT * FROM objective INNER JOIN key_result kr on objective.id = kr.objective_id WHERE (objective.id = :objective_id)");
+
+        $statement->bindParam(':objective_id', $objectiveId);
+        if (!$statement->execute()) {
+            return false;
+        }
+
+        $row = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $response = "<table class='modaltable'><thead><tr><th>Título</th><th>Descrição</th><th>Status</th></tr></thead>";
+        }
+
+        foreach ($row as $key => $item) {
+            $response .= "<tr>";
+            $response .= "<td>{$item['title']}</td>";
+            $response .= "<td>{$item['description']}</td>";
+            $response .= "<td>{$item['status']}</td>";
+            $response .= "</tr><br>";
+        }
+
+        if (!isset($response)) {
+            return false;
+        }
+
+        echo $response; exit();
+    }
 }
