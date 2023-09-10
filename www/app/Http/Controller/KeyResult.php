@@ -4,7 +4,6 @@ namespace App\Http\Controller;
 
 use App\Entity\KeyResultEntity;
 use App\Model\KeyResultModel;
-use App\Model\ObjectiveModel;
 
 class KeyResult extends Controller
 {

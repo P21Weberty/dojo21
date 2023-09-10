@@ -53,28 +53,6 @@ class ObjectiveModel
             return false;
         }
 
-        $row = $statement->fetchAll(\PDO::FETCH_ASSOC);
-
-        if ($row) {
-            $response = "<table class='modaltable'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Ações</th></tr></thead>";
-        }
-
-        foreach ($row as $key => $item) {
-            $response .= "<tr>";
-            $response .= "<td>{$key}</td>";
-            $response .= "<td>{$item['title']}</td>";
-            $response .= "<td>{$item['description']}</td>";
-            $response .= "<td>{$item['type']}</td>";
-            $response .= "<td><span class='material-icons key_editar' onclick='modal_editar({$item['id']})'>edit</span>";
-            $response .= "<span class='material-icons key_remover' onclick='remover({$item['id']})'>delete_outline</span></td>";
-            $response .= "</tr><br>";
-        }
-
-        if (!isset($response)) {
-            return false;
-        }
-
-        $response .= "</table>";
-        echo $response; exit();
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

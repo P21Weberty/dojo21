@@ -30,39 +30,25 @@ if (!isset($_COOKIE['user_id'])) {
         <p></p>
     </section>
 
-    <form method="POST" id="objective-form">
-        <div class="input-form">
-            <label for="title">Título:</label>
-            <input type="text" name="title" id="title" placeholder="Preparar o jantar">
-
-            <label for="description">Descrição:</label>
-            <input type="text" name="description" id="description" placeholder="1° - Comprar os ingredientes...">
-        </div>
-
-        <div>
-            <button class="btn" type="submit">OK</button>
-        </div>
-    </form>
-
-    <?php require_once "meus_objetivos.php"; ?>
+    <?php require_once "view/form/objective.php"; ?>
+    <?php require_once "view/meus_objetivos.php"; ?>
 
     <div id="key_add_modal" class="modal">
         <div class="modal-content">
             <span class="close_add_modal">X</span>
-            <?php require_once "adicionar_okr.php"; ?>
+            <?php require_once "view/form/key_result.php"; ?>
         </div>
     </div>
 
     <div id="key_update_modal" class="modal">
         <div class="modal-content">
             <span class="close_update_modal">X</span>
-            <?php require_once "editar_okr.php"; ?>
+            <?php require_once "view/form/key_result_update.php"; ?>
         </div>
     </div>
 
     <footer>
         <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-        <script src="assets/js/script.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
         <script src="assets/js/key-results.js" type="text/javascript"></script>
         <script src="assets/js/objective.js" type="text/javascript"></script>

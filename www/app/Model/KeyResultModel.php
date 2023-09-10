@@ -4,7 +4,6 @@ namespace App\Model;
 
 use App\Entity\DatabaseConnection;
 use App\Entity\KeyResultEntity;
-use App\Entity\ObjectiveEntity;
 
 class KeyResultModel
 {

@@ -4,8 +4,6 @@ namespace App\Http\Controller;
 
 use App\Entity\ObjectiveEntity;
 use App\Model\ObjectiveModel;
-use App\Model\UserModel;
-use App\Http\Controller\Controller;
 
 class Objective extends Controller
 {
@@ -49,9 +47,38 @@ class Objective extends Controller
 
         if ($isPost === 'POST') {
 
-            if (!(new ObjectiveModel())->lista($_POST['objective_id'])){
+            $row = (new ObjectiveModel())->lista($_POST['objective_id']);
+
+            if (!$this->buildTable($row)) {
                 http_response_code(400);
             }
+
         }
+    }
+
+    private function buildTable($row)
+    {
+        if ($row) {
+            $response = "<table class='modaltable'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Ações</th></tr></thead>";
+        }
+
+        foreach ($row as $key => $item) {
+            $response .= "<tr>";
+            $response .= "<td>{$key}</td>";
+            $response .= "<td>{$item['title']}</td>";
+            $response .= "<td>{$item['description']}</td>";
+            $response .= "<td>{$item['type']}</td>";
+            $response .= "<td><span class='material-icons key_editar' onclick='modal_editar({$item['id']})'>edit</span>";
+            $response .= "<span class='material-icons key_remover' onclick='remover({$item['id']})'>delete_outline</span></td>";
+            $response .= "</tr><br>";
+        }
+
+        if (!isset($response)) {
+            return false;
+        }
+
+        $response .= "</table>";
+
+        echo $response; exit();
     }
 }
