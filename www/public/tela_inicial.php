@@ -19,6 +19,7 @@ if (!isset($_COOKIE['user_id'])) {
     <title>Tela Inicial</title>
 </head>
 <body>
+<div class="container">
     <section class="jumbotron text-center">
         <h2>OKR: OBJECTIVE KEY RESULTS</h2>
         <p>É uma metodologia de definição de metas a partir de objetivos chaves</p>
@@ -29,29 +30,38 @@ if (!isset($_COOKIE['user_id'])) {
         <p></p>
     </section>
 
-    <form method="POST" id="objective-form" class="form">
-        <h2>Adicionar Objetivo usuário</h2>
-        <div class="form-group">
+    <form method="POST" id="objective-form">
+        <div class="input-form">
             <label for="title">Título:</label>
-            <input type="text" name="title" id="title" value="">
-        </div>
+            <input type="text" name="title" id="title" placeholder="Preparar o jantar">
 
-        <div class="form-group">
             <label for="description">Descrição:</label>
-            <input type="text" id="description" name="description" value="">
+            <input type="text" name="description" id="description" placeholder="1° - Comprar os ingredientes...">
         </div>
 
-        <button class="btn" type="submit">ENVIAR</button>
+        <div>
+            <button class="btn" type="submit">OK</button>
+        </div>
     </form>
-<?php require_once "adicionar_okr.php";?>
-<?php require_once "meus_objetivos.php";?>
 
-<footer>
-    <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-    <script src="assets/js/script.js" type="text/javascript"></script>
-    <script src="assets/js/key-results.js" type="text/javascript"></script>
-    <script src="assets/js/objective.js" type="text/javascript"></script>
-</footer>
+    <?php require_once "meus_objetivos.php"; ?>
+
+    <footer>
+        <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
+        <script src="assets/js/script.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <script src="assets/js/key-results.js" type="text/javascript"></script>
+        <script src="assets/js/objective.js" type="text/javascript"></script>
+    </footer>
+
+    <div id="key_add_modal" class="modal">
+        <div class="modal-content">
+            <span class="close_add_modal">X</span>
+            <?php require_once "adicionar_okr.php"; ?>
+        </div>
+    </div>
+
+
 </body>
 </html>
 

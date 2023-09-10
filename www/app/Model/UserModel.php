@@ -38,7 +38,6 @@ class UserModel
         }
 
         setcookie("user_id", $row['id'], time()+60*60*24*30, "/", NULL);
-        echo("<script>setTimeout(\"location.href = '/tela_inicial.php';\",1500);</script>");
         return true;
     }
 }

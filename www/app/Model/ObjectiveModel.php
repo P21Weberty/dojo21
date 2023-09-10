@@ -56,14 +56,17 @@ class ObjectiveModel
         $row = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         if ($row) {
-            $response = "<table class='modaltable'><thead><tr><th>Título</th><th>Descrição</th><th>Status</th></tr></thead>";
+            $response = "<table class='modaltable'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Ações</th></tr></thead>";
         }
 
         foreach ($row as $key => $item) {
             $response .= "<tr>";
+            $response .= "<td>{$key}</td>";
             $response .= "<td>{$item['title']}</td>";
             $response .= "<td>{$item['description']}</td>";
-            $response .= "<td>{$item['status']}</td>";
+            $response .= "<td>{$item['type']}</td>";
+            $response .= "<td><span class='material-icons key_editar' data-id='{$item['id']}'>edit</span>";
+            $response .= "<span class='material-icons key_remover' data-id='{$item['id']}'>delete_outline</span></td>";
             $response .= "</tr><br>";
         }
 
@@ -71,6 +74,7 @@ class ObjectiveModel
             return false;
         }
 
+        $response .= "</table>";
         echo $response; exit();
     }
 }

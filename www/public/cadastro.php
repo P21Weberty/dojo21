@@ -12,26 +12,17 @@
 
 </nav>
 <main class="container">
-    <section class="text-center">
-        <h2>Criar usuário</h2>
+    <section class="form">
         <form method="POST" id="user-form">
-            <div class="">
-                <label for="nome">
-                    <span>Nome: </span>
-                    <input type="text" name="name" id="name">
-                </label>
-            </div>
-            <div class="">
-                <label for="email">
-                    <span>Email: </span>
-                    <input type="email" id="email" name="email">
-                </label>
-            </div>
-            <div>
-                <label for="password">
-                    <span>Senha: </span>
-                    <input type="password" id="password" name="password">
-                </label>
+            <div class="input-form">
+                <label for="name">Nome:</label>
+                <input type="text" name="name" id="name" placeholder="John Doe">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="johndoe@gmail.com">
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="********">
             </div>
             <button type="submit" class="btn">ENVIAR</button>
         </form>

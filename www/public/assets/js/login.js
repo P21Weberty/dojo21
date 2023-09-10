@@ -10,7 +10,6 @@ let Login = (() => {
                 type: 'POST',
                 data: loginForm,
                 success: function (data) {
-                    alert(data)
                     window.location.href = "tela_inicial.php";
                 },
                 error: function (data){

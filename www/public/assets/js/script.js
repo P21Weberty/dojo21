@@ -15,6 +15,7 @@ $("span#modal_ver").click(function(e) {
     });
 
     $("span.close").click(function () {
+        $('.modaltable').remove()
         document.getElementById("modal").style.display = "none";
     });
 });
@@ -32,5 +33,13 @@ $("span#modal_remover").click(function(e) {
         error: function (error) {
             alert(error);
         }
+    });
+});
+
+$("span#modal_add").click(function(e) {
+    $('#key_add_modal').modal('show');
+
+    $("span.close_add_modal").click(function () {
+        document.getElementById("key_add_modal").style.display = "none";
     });
 });

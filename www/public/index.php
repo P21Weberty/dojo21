@@ -22,16 +22,15 @@ unset($_COOKIE["user_id"]);
 <main class="container">
     <section class="form">
         <form method="POST" id="login-form">
-            <div class="form-group">
+            <div class="input-form">
                 <label for="email">Email:</label>
-                <input type="email" placeholder="Digite aqui o e-mail" id="email" name="email" value="" autofocus>
-            </div>
-            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="johndoe@gmail.com">
+
                 <label for="password">Senha:</label>
-                <input type="password" placeholder="Digite aqui a senha" id="password" name="password" value="">
+                <input type="password" id="password" name="password" placeholder="********">
             </div>
 
-            <div class="form-button">
+            <div class="input-form">
                 <button class="btn" type="submit">Logar</button>
                 <a class="btn" href="cadastro.php">Cadastrar</a>
             </div>
