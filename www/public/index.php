@@ -30,10 +30,11 @@ unset($_COOKIE["user_id"]);
                 <input type="password" id="password" name="password" placeholder="********">
             </div>
 
-            <div class="input-form">
+            <div>
                 <button class="btn" type="submit">Logar</button>
                 <a class="btn" href="cadastro.php">Cadastrar</a>
             </div>
+
         </form>
     </section>
 </main>

@@ -4,6 +4,7 @@ namespace App\Http\Controller;
 
 use App\Entity\KeyResultEntity;
 use App\Model\KeyResultModel;
+use App\Model\ObjectiveModel;
 
 class KeyResult extends Controller
 {
@@ -27,6 +28,33 @@ class KeyResult extends Controller
             $this->sendJson([
                 'result' => 'success',
             ]);
+        }
+    }
+
+    public function delete()
+    {
+        $isPost = $_SERVER['REQUEST_METHOD'];
+
+        if ($isPost === 'POST') {
+
+            if (!(new KeyResultModel())->delete($_POST['key_result_id'])){
+                http_response_code(400);
+            }
+            $this->sendJson([
+                'result' => 'success',
+            ]);
+        }
+    }
+
+    public function edit()
+    {
+        $isPost = $_SERVER['REQUEST_METHOD'];
+
+        if ($isPost === 'POST') {
+
+            if (!(new KeyResultModel())->edit()){
+                http_response_code(400);
+            }
         }
     }
 }

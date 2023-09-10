@@ -65,8 +65,8 @@ class ObjectiveModel
             $response .= "<td>{$item['title']}</td>";
             $response .= "<td>{$item['description']}</td>";
             $response .= "<td>{$item['type']}</td>";
-            $response .= "<td><span class='material-icons key_editar' data-id='{$item['id']}'>edit</span>";
-            $response .= "<span class='material-icons key_remover' data-id='{$item['id']}'>delete_outline</span></td>";
+            $response .= "<td><span class='material-icons key_editar' onclick='modal_editar({$item['id']})'>edit</span>";
+            $response .= "<span class='material-icons key_remover' onclick='remover({$item['id']})'>delete_outline</span></td>";
             $response .= "</tr><br>";
         }
 

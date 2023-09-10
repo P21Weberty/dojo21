@@ -30,4 +30,45 @@ class KeyResultModel
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function delete($key_result_id)
+    {
+        $pdoConnection = (new DatabaseConnection())->getConnection();
+
+        /** @var $pdoConnection PDO */
+        $statement = $pdoConnection->prepare("DELETE FROM key_result WHERE id = :key_result_id");
+        $statement->bindParam(':key_result_id', $key_result_id);
+
+        if (!$statement->execute()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function edit()
+    {
+        $pdoConnection = (new DatabaseConnection())->getConnection();
+        $statement = $pdoConnection->prepare("UPDATE key_result SET title = :title, description = :description, type = :type  WHERE id = :id");
+
+        $statement->bindParam(':title', $_POST['title']);
+        $statement->bindParam(':description', $_POST['description']);
+        $statement->bindParam(':type', $_POST['type']);
+        $statement->bindParam(':id', $_POST['id']);
+        if (!$statement->execute()) {
+            return false;
+        }
+
+        $row = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $response = "";
+        }
+
+        if (!isset($response)) {
+            return false;
+        }
+
+        echo $response; exit();
+    }
+
 }

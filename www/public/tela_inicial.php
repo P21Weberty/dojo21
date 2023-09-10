@@ -46,14 +46,6 @@ if (!isset($_COOKIE['user_id'])) {
 
     <?php require_once "meus_objetivos.php"; ?>
 
-    <footer>
-        <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
-        <script src="assets/js/script.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-        <script src="assets/js/key-results.js" type="text/javascript"></script>
-        <script src="assets/js/objective.js" type="text/javascript"></script>
-    </footer>
-
     <div id="key_add_modal" class="modal">
         <div class="modal-content">
             <span class="close_add_modal">X</span>
@@ -61,7 +53,20 @@ if (!isset($_COOKIE['user_id'])) {
         </div>
     </div>
 
+    <div id="key_update_modal" class="modal">
+        <div class="modal-content">
+            <span class="close_update_modal">X</span>
+            <?php require_once "editar_okr.php"; ?>
+        </div>
+    </div>
 
+    <footer>
+        <script src="assets/jQuery/jquery-3.7.0.min.js" type="text/javascript"></script>
+        <script src="assets/js/script.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <script src="assets/js/key-results.js" type="text/javascript"></script>
+        <script src="assets/js/objective.js" type="text/javascript"></script>
+    </footer>
 </body>
 </html>
 

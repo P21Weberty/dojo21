@@ -35,5 +35,13 @@ class Router
         if($url === '/key-results/save'){
             (new KeyResult())->save();
         }
+
+        if($url === '/key-results/delete'){
+            (new KeyResult())->delete();
+        }
+
+        if($url === '/key-results/edit'){
+            (new KeyResult())->edit();
+        }
     }
 }
