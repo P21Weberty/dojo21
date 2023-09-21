@@ -31,19 +31,13 @@ if (!isset($_COOKIE['user_id'])) {
     </section>
 
     <?php require_once "view/form/objective.php"; ?>
-    <?php require_once "view/meus_objetivos.php"; ?>
+    <?php require_once "view/objectives.php"; ?>
 
-    <div id="key_add_modal" class="modal">
+
+    <div id="key_modal" class="modal">
         <div class="modal-content">
-            <span class="close_add_modal">X</span>
+            <span class="close_modal">X</span>
             <?php require_once "view/form/key_result.php"; ?>
-        </div>
-    </div>
-
-    <div id="key_update_modal" class="modal">
-        <div class="modal-content">
-            <span class="close_update_modal">X</span>
-            <?php require_once "view/form/key_result_update.php"; ?>
         </div>
     </div>
 

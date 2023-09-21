@@ -24,6 +24,7 @@ let User = (() => {
         }
     }
 })();
+
 $(document).ready(() => {
    User.init();
 });

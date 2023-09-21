@@ -165,7 +165,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     /* Could be more or less, depending on screen size */
 }
 
-.modaltable {
+.modal-table {
     position: absolute;
     text-align: left;
     width: 80%;

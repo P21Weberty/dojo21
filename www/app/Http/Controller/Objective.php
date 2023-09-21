@@ -59,7 +59,7 @@ class Objective extends Controller
     private function buildTable($row)
     {
         if ($row) {
-            $response = "<table class='modaltable'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Ações</th></tr></thead>";
+            $response = "<table class='modal-table'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Ações</th></tr></thead>";
         }
 
         foreach ($row as $key => $item) {
@@ -68,8 +68,8 @@ class Objective extends Controller
             $response .= "<td>{$item['title']}</td>";
             $response .= "<td>{$item['description']}</td>";
             $response .= "<td>{$item['type']}</td>";
-            $response .= "<td><span class='material-icons key_editar' onclick='modal_editar({$item['id']})'>edit</span>";
-            $response .= "<span class='material-icons key_remover' onclick='remover({$item['id']})'>delete_outline</span></td>";
+            $response .= "<td><span class='material-icons key_editar' onclick='KeyResult.handleEdit({$item['id']})'>edit</span>";
+            $response .= "<span class='material-icons key_remover' onclick='KeyResult.handleRemove({$item['id']})'>delete_outline</span></td>";
             $response .= "</tr><br>";
         }
 

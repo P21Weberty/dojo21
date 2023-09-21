@@ -25,6 +25,7 @@ let Login = (() => {
         }
     }
 })();
+
 $(document).ready(() => {
    Login.init();
 });
