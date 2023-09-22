@@ -1,10 +1,10 @@
 let KeyResult = (() => {
     let handleForm = () => {
         $("span#modal-add").click(function (e) {
-            $('#key_modal').modal('show');
+            $('#key-add-modal').modal('show');
 
-            $("span.close_modal").click(function () {
-                document.getElementById("key_modal").style.display = "none";
+            $("span.close_add_modal").click(function () {
+                document.getElementById("key-add-modal").style.display = "none";
             });
 
             $('#key-result-form').submit(function (event) {
@@ -26,16 +26,15 @@ let KeyResult = (() => {
     }
 
     let handleEdit = (key_result_id) => {
-        $('#key_modal').modal('show');
+        $('#key-update-modal').modal('show');
 
-        $("span.close_modal").click(function () {
-            document.getElementById("key_modal").style.display = "none";
+        $("span.close_update_modal").click(function () {
+            document.getElementById("key-update-modal").style.display = "none";
         });
 
-        $('#update').submit(function (event) {
+        $('#key-result-form-update').submit(function (event) {
             let keyForm = $(this).serialize();
             keyForm =  keyForm + ("&&id=" + key_result_id);
-            alert("AQUI")
 
             event.preventDefault();
             $.ajax({

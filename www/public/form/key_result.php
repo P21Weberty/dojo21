@@ -7,8 +7,6 @@ $objectiveModel = new ObjectiveModel();
 
 $objectives = $objectiveModel->listar($_COOKIE['user_id']);
 ?>
-
-<form method="POST" id="key-result-form">
     <h2>Adicionar key results</h2>
     <div class="input-form">
         <label for="objective">Objetivo:</label>
@@ -39,6 +37,5 @@ $objectives = $objectiveModel->listar($_COOKIE['user_id']);
     <div class="input-form">
         <button class="btn" type="submit">Enviar</button>
     </div>
-</form>
 
 
