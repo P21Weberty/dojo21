@@ -48,3 +48,6 @@ CREATE TABLE key_result
 );
 
 create index fk_objective_id_idx on key_result (objective_id);
+
+alter table okr.key_result
+    add status bool null comment 'Checar se a tarefa foi concluída';

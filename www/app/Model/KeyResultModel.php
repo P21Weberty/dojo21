@@ -7,6 +7,7 @@ use App\Entity\KeyResultEntity;
 
 class KeyResultModel
 {
+
     public function save(KeyResultEntity $keyResultEntity){
         $pdoConnection = (new DatabaseConnection())->getConnection();
 
@@ -53,6 +54,31 @@ class KeyResultModel
         $statement->bindParam(':description', $_POST['description']);
         $statement->bindParam(':type', $_POST['type']);
         $statement->bindParam(':id', $_POST['id']);
+        if (!$statement->execute()) {
+            return false;
+        }
+
+        $row = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $response = "";
+        }
+
+        if (!isset($response)) {
+            return false;
+        }
+
+        echo $response; exit();
+    }
+
+    public function status()
+    {
+        $pdoConnection = (new DatabaseConnection())->getConnection();
+        $statement = $pdoConnection->prepare("UPDATE key_result SET status = :status  WHERE id = :id");
+
+        $checked = true;
+        $statement->bindParam(':status', $checked);
+        $statement->bindParam(':id', $_POST['key_result_id']);
         if (!$statement->execute()) {
             return false;
         }

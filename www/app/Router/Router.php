@@ -39,6 +39,9 @@ class Router
             case '/key-results/edit':
                 (new KeyResult())->edit();
                 break;
+            case '/key-results/status':
+                (new KeyResult())->status();
+                break;
         }
     }
 }

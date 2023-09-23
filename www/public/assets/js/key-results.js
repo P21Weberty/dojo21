@@ -1,5 +1,5 @@
 let KeyResult = (() => {
-    let handleForm = () => {
+    let handleForm = (objective_id) => {
         $("span#modal-add").click(function (e) {
             $('#key-add-modal').modal('show');
 
@@ -9,6 +9,7 @@ let KeyResult = (() => {
 
             $('#key-result-form').submit(function (event) {
                 let keyResultForm = $(this).serialize();
+                alert(keyResultForm)
                 event.preventDefault();
                 $.ajax({
                     url: '/key-results/save',
@@ -22,6 +23,20 @@ let KeyResult = (() => {
                     }
                 });
             });
+        });
+    }
+
+    let handleStatus = (key_result_id) => {
+        $.ajax({
+            url: '/key-results/status',
+            type: 'POST',
+            data: 'key_result_id=' + key_result_id,
+            success: function (response) {
+                document.location.href = "tela_inicial.php"
+            },
+            error: function (error) {
+                document.location.href = "tela_inicial.php"
+            }
         });
     }
 
@@ -51,11 +66,11 @@ let KeyResult = (() => {
         });
     }
 
-    let handleRemove = (objectiveId) => {
+    let handleRemove = (key_result_id) => {
         $.ajax({
             url: '/key-results/delete',
             type: 'POST',
-            data: 'key_result_id=' + objectiveId,
+            data: 'key_result_id=' + key_result_id,
             success: function (response) {
                 document.location.href = "tela_inicial.php"
             },
@@ -66,6 +81,7 @@ let KeyResult = (() => {
     }
 
     return {
+        handleStatus:handleStatus,
         handleEdit:handleEdit,
         handleRemove:handleRemove,
         init: () => {

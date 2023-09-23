@@ -56,4 +56,19 @@ class KeyResult extends Controller
             }
         }
     }
+
+    public function status()
+    {
+        $isPost = $_SERVER['REQUEST_METHOD'];
+
+        if ($isPost === 'POST') {
+
+            if (!(new KeyResultModel())->status()){
+                http_response_code(400);
+            }
+            $this->sendJson([
+                'result' => 'success',
+            ]);
+        }
+    }
 }
