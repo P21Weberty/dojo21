@@ -82,18 +82,6 @@ class KeyResultModel
         if (!$statement->execute()) {
             return false;
         }
-
-        $row = $statement->fetchAll(\PDO::FETCH_ASSOC);
-
-        if ($row) {
-            $response = "";
-        }
-
-        if (!isset($response)) {
-            return false;
-        }
-
-        echo $response; exit();
     }
 
 }

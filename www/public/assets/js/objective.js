@@ -9,7 +9,11 @@ let Objective = (() => {
                 data: userForm,
                 success: function (data) {
                     document.location.href = "tela_inicial.php"
+                },
+                error: function (data) {
+                    document.location.href = "tela_inicial.php"
                 }
+
             });
         });
     }

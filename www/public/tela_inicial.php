@@ -9,11 +9,8 @@ if (!isset($_COOKIE['user_id'])) {
 }
 
 (new Router())->route();
-?>
 
-<?php
 $title = "Home";
-
 require_once "partial/head.php";
 ?>
 

@@ -14,6 +14,8 @@ $objectives = $objectiveModel->listar($_COOKIE['user_id']);
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 ?>
+
+<button style="position: relative" class="material-icons" id="modal-add">add</button>
 <div class="meus-objetivos">
     <table class="table">
         <thead>
@@ -31,11 +33,10 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 <td><?= ++$key; ?></td>
                 <td><?= $objective['title']; ?></td>
                 <td><?= $objective['description']; ?></td>
-                <td><?= $objective['status']; ?></td>
+                <td><?= $objective['status'] ? "CONCLUÍDO": "PENDENTE"; ?></td>
                 <td>
                     <div style="display: flex">
                         <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal-show">visibility</span>
-                        <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal-add">add</span>
                         <span class="material-icons" data-id="<?= $objective['id']; ?>" id="modal-remove">delete_outline</span>
                     </div>
                 </td>

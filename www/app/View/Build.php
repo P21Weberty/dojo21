@@ -3,13 +3,11 @@
 namespace App\View;
 
 class Build {
-    /**
-     * @param $row
-     */
+
     public function table($row)
     {
         if ($row) {
-            $response = "<br><br><br><table class='modal-table'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Status</th><th>Ações</th></tr></thead>";
+            $response = "<br><br><div><table class='modal-table'><thead><tr><th>#</th><th>Título</th><th>Descrição</th><th>Tipo</th><th>Status</th><th>Ações</th></tr></thead>";
         }
 
         if (!isset($response)) {
@@ -33,7 +31,7 @@ class Build {
             $count++;
         }
 
-        $response .= "</table>";
+        $response .= "</table></div>";
 
         echo $response; exit();
     }

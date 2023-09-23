@@ -1,6 +1,6 @@
 let KeyResult = (() => {
-    let handleForm = (objective_id) => {
-        $("span#modal-add").click(function (e) {
+    let handleForm = () => {
+        $("#modal-add").click(function (e) {
             $('#key-add-modal').modal('show');
 
             $("span.close_add_modal").click(function () {
@@ -9,7 +9,6 @@ let KeyResult = (() => {
 
             $('#key-result-form').submit(function (event) {
                 let keyResultForm = $(this).serialize();
-                alert(keyResultForm)
                 event.preventDefault();
                 $.ajax({
                     url: '/key-results/save',
